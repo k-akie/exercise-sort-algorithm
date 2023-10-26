@@ -3,6 +3,7 @@ from unittest import TestCase
 from bubble_sort import bubble_sort
 from insertion_sort import insertion_sort
 from merge_sort import merge_sort
+from quick_sort import quick_sort
 from selection_sort import selection_sort
 from shell_sort import sell_sort
 
@@ -23,3 +24,4 @@ class Test(TestCase):
                 self.assertEqual(expected, insertion_sort(target))
                 self.assertEqual(expected, merge_sort(target))
                 self.assertEqual(expected, sell_sort(target))
+                self.assertEqual(expected, quick_sort(target))
