@@ -10,34 +10,35 @@ def merge_sort(t: list[int]):
         # 整列済みリスト2組をマージする
         mergedLists = []
         for i in range(0, int((len(splitLists) + 1) / 2)):
+            # 整列済みリスト2組を選ぶ
+            index_a = 2 * i
+            index_b = 2 * i + 1
+            list_a = splitLists[index_a]
+            # 整列済みリストが足りなければ空リストで補完
+            list_b = [] if index_b > len(splitLists) - 1 else splitLists[index_b]
+
+            # 整列済みリストのうち、どの一の要素を扱っているか
+            pos_a = 0
+            pos_b = 0
             mergedList = []
+            while pos_a < len(list_a) or pos_b < len(list_b):
+                if pos_a == len(list_a):
+                    mergedList.append(list_b[pos_b])
+                    pos_b += 1
+                    continue
 
-            if (2 * i + 1) > len(splitLists) - 1:
-                mergedList = splitLists[2 * i]
-            else:
-                list_a = splitLists[2 * i]
-                list_b = splitLists[2 * i + 1]
-                pos_a = 0
-                pos_b = 0
-
-                while pos_a < len(list_a) or pos_b < len(list_b):
-                    if pos_a == len(list_a):
-                        mergedList.append(list_b[pos_b])
-                        pos_b += 1
-                        continue
-
-                    if pos_b == len(list_b):
-                        mergedList.append(list_a[pos_a])
-                        pos_a += 1
-                        continue
-
-                    if list_a[pos_a] > list_b[pos_b]:
-                        mergedList.append(list_b[pos_b])
-                        pos_b += 1
-                        continue
-
+                if pos_b == len(list_b):
                     mergedList.append(list_a[pos_a])
                     pos_a += 1
+                    continue
+
+                if list_a[pos_a] > list_b[pos_b]:
+                    mergedList.append(list_b[pos_b])
+                    pos_b += 1
+                    continue
+
+                mergedList.append(list_a[pos_a])
+                pos_a += 1
 
             mergedLists.append(mergedList)
             print(mergedLists)
