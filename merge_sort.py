@@ -6,9 +6,8 @@ def merge_sort(t: list[int]):
 
     # 最初に要素1個ずつのリストに分割する
     splitLists = [target[idx:idx + 1] for idx in range(0, len(target), 1)]
-    # 2組ずつマージしていくので 最大長 / 2 回だけ繰り返す
-    loop = int(len(target) / 2 + 1)
-    while loop > 0:
+
+    while len(splitLists) > 1:
         mergedLists = []
 
         # 整列済みリスト2組を順にマージする
@@ -48,6 +47,5 @@ def merge_sort(t: list[int]):
             print(mergedLists)
 
         splitLists = mergedLists
-        loop -= 1
 
     return splitLists.pop() if splitLists else []
