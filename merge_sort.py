@@ -5,7 +5,8 @@ def merge_sort(t: list[int]):
     target = copy.copy(t)
 
     tempList = [target[idx:idx + 1] for idx in range(0, len(target), 1)]
-    for k in range(0, int(len(target) / 2 + 1)):
+    loop = int(len(target) / 2 + 1)
+    while loop > 0:
         # 整列済みリスト2組をマージする
         mergedLists = []
         for i in range(0, int((len(tempList) + 1) / 2)):
@@ -42,5 +43,6 @@ def merge_sort(t: list[int]):
             print(mergedLists)
 
         tempList = mergedLists
+        loop -= 1
 
     return tempList.pop() if tempList else []
