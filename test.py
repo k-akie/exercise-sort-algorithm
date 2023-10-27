@@ -10,15 +10,16 @@ from shell_sort import sell_sort
 
 class Test(TestCase):
     def test(self):
-        for target, expected in (
-                ([], []),
-                ([2, 1], [1, 2]),
-                ([3, 2, 1], [1, 2, 3]),
-                ([2, 2, 3, 5, 4], [2, 2, 3, 4, 5]),
-                ([5, 6, 4, 1, 3, 8, 7, 9], [1, 3, 4, 5, 6, 7, 8, 9]),
-                ([2, 5, 6, 7, 3, 2, 8, 1], [1, 2, 2, 3, 5, 6, 7, 8]),
+        for target in (
+                ([]),
+                ([2, 1]),
+                ([3, 2, 1]),
+                ([2, 2, 3, 5, 4]),
+                ([5, 6, 4, 1, 3, 8, 7, 9]),
+                ([2, 5, 6, 7, 3, 2, 8, 1]),
         ):
-            with self.subTest(target=target, expected=expected):
+            with self.subTest(target=target):
+                expected = sorted(target)
                 self.assertEqual(expected, bubble_sort(target))
                 self.assertEqual(expected, selection_sort(target))
                 self.assertEqual(expected, insertion_sort(target))
